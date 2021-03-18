@@ -1,5 +1,23 @@
-GET http://localhost:8080/categorias/
+# atualizar categoria por id
+PUT http://localhost:8080/categorias
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nome": "Teste",
+  "descricao": "Livro Teste"
+}
+
 ###
+# listar todas as categorias com livros
+GET http://localhost:8080/categorias/
+
+###
+# listar categoria por id
+GET http://localhost:8080/categorias/1
+
+###
+# listar categoria por id
 POST http://localhost:8080/categorias
 Content-Type: application/json
 

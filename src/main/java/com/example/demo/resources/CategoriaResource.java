@@ -41,4 +41,11 @@ public class CategoriaResource {
 
         return ResponseEntity.created(uri).build();
     }
+
+    @PutMapping
+    public ResponseEntity<CategoriaDTO> update(@RequestBody CategoriaDTO categoriaDTO) {
+        Categoria categoria = categoriaService.update(categoriaDTO);
+
+        return ResponseEntity.ok().body(new CategoriaDTO(categoria));
+    }
 }

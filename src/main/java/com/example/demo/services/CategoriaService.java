@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.domain.Categoria;
+import com.example.demo.dtos.CategoriaDTO;
 import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.resources.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,12 @@ public class CategoriaService {
         return categoriaRepository.save(categoria);
     }
 
+    public Categoria update(CategoriaDTO categoriaDTO) {
+
+        Categoria categoria = findById(categoriaDTO.getId());
+        categoria.setNome(categoriaDTO.getNome());
+        categoria.setDescricao(categoriaDTO.getDescricao());
+
+        return categoriaRepository.save(categoria);
+    }
 }
