@@ -1,3 +1,8 @@
+# deletar categoria por id
+DELETE http://localhost:8080/categorias/1
+
+###
+
 # atualizar categoria por id
 PUT http://localhost:8080/categorias
 Content-Type: application/json
