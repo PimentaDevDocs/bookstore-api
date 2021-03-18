@@ -3,8 +3,8 @@ package com.example.demo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dominio.Categoria;
-import com.example.demo.dominio.Livro;
+import com.example.demo.domain.Categoria;
+import com.example.demo.domain.Livro;
 import com.example.demo.repositories.CategoriaRepository;
 import com.example.demo.repositories.LivroRepository;
 
