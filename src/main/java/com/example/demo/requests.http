@@ -1,3 +1,13 @@
+POST http://localhost:8080/livros?categoria=1
+Content-Type: application/json
+
+{
+  "titulo": "Teste",
+  "nomeAutor": "teste",
+  "texto": "teste"
+}
+
+###
 
 # atualizar livro parcial
 PATCH http://localhost:8080/livros
@@ -24,7 +34,7 @@ Content-Type: application/json
 
 ###
 # listar livros por id de categoria
-GET http://localhost:8080/livros?categoria=2
+GET http://localhost:8080/livros?categoria=1
 
 ###
 # listar livros por id

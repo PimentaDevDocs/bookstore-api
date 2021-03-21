@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.domain.Categoria;
 import com.example.demo.domain.Livro;
 import com.example.demo.dtos.LivroDTO;
 import com.example.demo.repositories.LivroRepository;
@@ -46,5 +47,18 @@ public class LivroService {
         livro.setNomeAutor(livroDTO.getNomeAutor());
 
         return livro;
+    }
+
+    public Livro create(Integer idCategoria, LivroDTO livroDTO) {
+
+        livroDTO.setId(null);
+
+        Categoria categoria = categoriaService.findById(idCategoria);
+
+        Livro livro = new Livro(livroDTO.getId(), livroDTO.getTitulo(), livroDTO.getNomeAutor(),
+                livroDTO.getTexto(), categoria);
+
+        return livroRepository.save(livro);
+
     }
 }

@@ -6,7 +6,9 @@ import com.example.demo.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,14 +36,27 @@ public class LivroResource {
     }
 
     @PutMapping
-    public ResponseEntity<Livro> update(@RequestBody LivroDTO livroDTO){
+    public ResponseEntity<Livro> update(@RequestBody LivroDTO livroDTO) {
         Livro livro = livroService.update(livroDTO);
         return ResponseEntity.ok().body(livro);
     }
 
     @PatchMapping
-    public ResponseEntity<Livro> updatePatch(@RequestBody LivroDTO livroDTO){
+    public ResponseEntity<Livro> updatePatch(@RequestBody LivroDTO livroDTO) {
         Livro livro = livroService.update(livroDTO);
         return ResponseEntity.ok().body(livro);
+    }
+
+    @PostMapping
+    public ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue = "0") Integer idCategoria,
+                                        @RequestBody LivroDTO livroDTO) {
+
+        Livro livro = livroService.create(idCategoria, livroDTO);
+
+        URI uri =
+                ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}").buildAndExpand(livro.getId()).toUri();
+
+        return ResponseEntity.created(uri).build();
+
     }
 }
