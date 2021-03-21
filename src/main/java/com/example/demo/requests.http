@@ -1,3 +1,9 @@
+# deletar livro por id
+DELETE http://localhost:8080/livros/1
+
+###
+
+# create livro com categoria
 POST http://localhost:8080/livros?categoria=1
 Content-Type: application/json
 
