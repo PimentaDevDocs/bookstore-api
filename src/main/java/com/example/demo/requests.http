@@ -1,4 +1,8 @@
-GET http://localhost:8080/livros/11
+# listar livros por id de categoria
+GET http://localhost:8080/livros?categoria=2
+###
+# listar livros por id
+GET http://localhost:8080/livros/1
 ###
 # deletar categoria por id
 DELETE http://localhost:8080/categorias/1
