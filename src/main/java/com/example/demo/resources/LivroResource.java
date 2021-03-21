@@ -32,4 +32,16 @@ public class LivroResource {
 
         return ResponseEntity.ok().body(dtoList);
     }
+
+    @PutMapping
+    public ResponseEntity<Livro> update(@RequestBody LivroDTO livroDTO){
+        Livro livro = livroService.update(livroDTO);
+        return ResponseEntity.ok().body(livro);
+    }
+
+    @PatchMapping
+    public ResponseEntity<Livro> updatePatch(@RequestBody LivroDTO livroDTO){
+        Livro livro = livroService.update(livroDTO);
+        return ResponseEntity.ok().body(livro);
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.domain.Livro;
+import com.example.demo.dtos.LivroDTO;
 import com.example.demo.repositories.LivroRepository;
 import com.example.demo.resources.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,21 @@ public class LivroService {
         categoriaService.findById(idCategoria);
 
         return livroRepository.findAllByCategoria(idCategoria);
+    }
+
+    public Livro update(LivroDTO livroDTO) {
+
+        Livro livro = findById(livroDTO.getId());
+
+        return livroRepository.save(updateData(livroDTO, livro));
+    }
+
+    private Livro updateData(LivroDTO livroDTO, Livro livro) {
+
+        livro.setTexto(livroDTO.getTexto());
+        livro.setTitulo(livroDTO.getTitulo());
+        livro.setNomeAutor(livroDTO.getNomeAutor());
+
+        return livro;
     }
 }
