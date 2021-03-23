@@ -28,6 +28,7 @@ public class LivroService {
     }
 
     public List<Livro> findAll(Integer idCategoria) {
+
         categoriaService.findById(idCategoria);
 
         return livroRepository.findAllByCategoria(idCategoria);
@@ -63,7 +64,10 @@ public class LivroService {
     }
 
     public void delete(Integer id) {
+
         Livro livro = findById(id);
+
+
         livroRepository.delete(livro);
     }
 }

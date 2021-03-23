@@ -1,8 +1,10 @@
 package com.example.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Entity
@@ -13,8 +15,17 @@ public class Livro implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message = "Campo TÍTULO não pode ser nulo.")
+    @Length(min = 3, max = 100, message = "O campo TÍTULO deve ter entre 3 e 100 caracteres.")
     private String titulo;
+
+    @NotEmpty(message = "Campo NOME AUTOR não pode ser nulo.")
+    @Length(min = 3, max = 100, message = "O campo NOME AUTOR deve ter entre 3 e 100 caracteres.")
     private String nomeAutor;
+
+    @NotEmpty(message = "Campo TEXTO não pode ser nulo.")
+    @Length(min = 3, max = 200, message = "O campo TEXTO deve ter entre 3 e 100 caracteres.")
     private String texto;
 
     @JsonIgnore
